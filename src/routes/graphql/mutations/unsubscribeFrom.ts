@@ -18,7 +18,7 @@ export const unsubscribeFrom = {
     },
 
     async resolve(
-      _source: string,
+      _source: unknown,
       {
         userId,
         authorId,
@@ -28,7 +28,7 @@ export const unsubscribeFrom = {
       },
       { prisma }: { prisma: PrismaClient },
     ) {
-      return prisma.subscribersOnAuthors.delete({
+      await prisma.subscribersOnAuthors.delete({
         where: {
           subscriberId_authorId: {
             subscriberId: userId,
@@ -36,6 +36,8 @@ export const unsubscribeFrom = {
           },
         },
       });
+
+      return authorId;
     },
   },
 };

@@ -14,7 +14,7 @@ export const deleteProfile = {
     },
 
     async resolve(
-      _source: string,
+      _source: unknown,
       {
         id,
       }: Record<string, unknown> & {

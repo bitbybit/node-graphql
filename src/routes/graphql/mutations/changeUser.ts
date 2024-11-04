@@ -18,7 +18,7 @@ export const changeUser = {
     },
 
     async resolve(
-      _source: string,
+      _source: unknown,
       {
         id,
         dto,

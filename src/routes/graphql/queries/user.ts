@@ -26,6 +26,20 @@ export const user = {
         where: {
           id,
         },
+        include: {
+          posts: true,
+          profile: true,
+          subscribedToUser: {
+            select: {
+              subscriber: true,
+            },
+          },
+          userSubscribedTo: {
+            select: {
+              author: true,
+            },
+          },
+        },
       });
     },
   },

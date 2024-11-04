@@ -8,7 +8,7 @@ export const users = {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(userType))),
 
     async resolve(
-      _source: string,
+      _source: unknown,
       _variables: Record<string, unknown>,
       { prisma }: { prisma: PrismaClient },
     ) {

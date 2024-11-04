@@ -18,7 +18,7 @@ export const subscribeTo = {
     },
 
     async resolve(
-      _source: string,
+      _source: unknown,
       {
         userId,
         authorId,
@@ -28,12 +28,14 @@ export const subscribeTo = {
       },
       { prisma }: { prisma: PrismaClient },
     ) {
-      return prisma.subscribersOnAuthors.create({
+      await prisma.subscribersOnAuthors.create({
         data: {
           subscriberId: userId,
           authorId: authorId,
         },
       });
+
+      return authorId;
     },
   },
 };

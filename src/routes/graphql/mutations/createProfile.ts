@@ -14,7 +14,7 @@ export const createProfile = {
     },
 
     async resolve(
-      _source: string,
+      _source: unknown,
       {
         dto,
       }: Record<string, unknown> & {

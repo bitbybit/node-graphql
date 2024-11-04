@@ -8,7 +8,7 @@ export const memberTypes = {
     type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(memberTypeType))),
 
     async resolve(
-      _source: string,
+      _source: unknown,
       _variables: Record<string, unknown>,
       { prisma }: { prisma: PrismaClient },
     ) {
