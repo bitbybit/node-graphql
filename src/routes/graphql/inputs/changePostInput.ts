@@ -1,4 +1,4 @@
-import { GraphQLInputObjectType, GraphQLNonNull } from 'graphql/type/index.js';
+import { GraphQLInputObjectType } from 'graphql/type/index.js';
 import { GraphQLString } from 'graphql';
 
 export const changePostInput = new GraphQLInputObjectType({
@@ -6,10 +6,10 @@ export const changePostInput = new GraphQLInputObjectType({
 
   fields: {
     title: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
     content: {
-      type: new GraphQLNonNull(GraphQLString),
+      type: GraphQLString,
     },
   },
 });

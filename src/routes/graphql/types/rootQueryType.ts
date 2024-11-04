@@ -5,6 +5,8 @@ import { users } from '../queries/users.js';
 import { user } from '../queries/user.js';
 import { posts } from '../queries/posts.js';
 import { post } from '../queries/post.js';
+import { profiles } from '../queries/profiles.js';
+import { profile } from '../queries/profile.js';
 
 export const rootQueryType = new GraphQLObjectType({
   name: 'RootQueryType',
@@ -19,6 +21,9 @@ export const rootQueryType = new GraphQLObjectType({
 
       ...posts,
       ...post,
+
+      ...profiles,
+      ...profile,
     };
   },
 });

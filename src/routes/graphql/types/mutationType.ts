@@ -5,6 +5,9 @@ import { changeUser } from '../mutations/changeUser.js';
 import { createPost } from '../mutations/createPost.js';
 import { changePost } from '../mutations/changePost.js';
 import { deletePost } from '../mutations/deletePost.js';
+import { createProfile } from '../mutations/createProfile.js';
+import { changeProfile } from '../mutations/changeProfile.js';
+import { deleteProfile } from '../mutations/deleteProfile.js';
 
 export const mutationType = new GraphQLObjectType({
   name: 'Mutations',
@@ -18,6 +21,10 @@ export const mutationType = new GraphQLObjectType({
       ...createPost,
       ...changePost,
       ...deletePost,
+
+      ...createProfile,
+      ...changeProfile,
+      ...deleteProfile,
     };
   },
 });
