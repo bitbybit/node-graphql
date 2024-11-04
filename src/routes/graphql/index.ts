@@ -4,6 +4,7 @@ import { createGqlResponseSchema, gqlResponseSchema } from './schemas.js';
 import { graphql, GraphQLSchema, validate, parse } from 'graphql';
 import { rootQueryType } from './types/rootQueryType.js';
 import { mutationsType } from './types/mutationsType.js';
+import { createLoaders } from './dataloaders.js';
 
 const plugin: FastifyPluginAsyncTypebox = async (fastify) => {
   const { prisma } = fastify;
@@ -39,12 +40,15 @@ const plugin: FastifyPluginAsyncTypebox = async (fastify) => {
         };
       }
 
+      const loaders = createLoaders(prisma);
+
       return graphql({
         schema,
         source: query,
         variableValues: variables,
         contextValue: {
           prisma,
+          loaders,
         },
       });
     },
