@@ -1,18 +1,18 @@
 import { GraphQLList } from 'graphql';
-import { memberTypeType } from '../types/memberTypeType.js';
 import { PrismaClient } from '@prisma/client';
+import { userType } from '../types/userType.js';
 import { GraphQLNonNull } from 'graphql/type/index.js';
 
-export const memberTypes = {
-  memberTypes: {
-    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(memberTypeType))),
+export const users = {
+  users: {
+    type: new GraphQLNonNull(new GraphQLList(new GraphQLNonNull(userType))),
 
     async resolve(
       _source: string,
       _variables: Record<string, unknown>,
       { prisma }: { prisma: PrismaClient },
     ) {
-      return prisma.memberType.findMany();
+      return prisma.user.findMany();
     },
   },
 };

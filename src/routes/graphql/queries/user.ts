@@ -1,15 +1,15 @@
-import { memberTypeType } from '../types/memberTypeType.js';
 import { PrismaClient } from '@prisma/client';
 import { GraphQLNonNull } from 'graphql/type/index.js';
-import { memberTypeId } from '../enums/memberTypeId.js';
+import { userType } from '../types/userType.js';
+import { UUIDType } from '../types/uuid.js';
 
-export const memberType = {
-  memberType: {
-    type: memberTypeType,
+export const user = {
+  user: {
+    type: userType,
 
     args: {
       id: {
-        type: new GraphQLNonNull(memberTypeId),
+        type: new GraphQLNonNull(UUIDType),
       },
     },
 
@@ -22,7 +22,7 @@ export const memberType = {
       },
       { prisma }: { prisma: PrismaClient },
     ) {
-      return prisma.memberType.findUnique({
+      return prisma.user.findUnique({
         where: {
           id,
         },

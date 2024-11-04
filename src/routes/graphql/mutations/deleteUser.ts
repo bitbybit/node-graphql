@@ -1,15 +1,15 @@
-import { memberTypeType } from '../types/memberTypeType.js';
 import { PrismaClient } from '@prisma/client';
+import { GraphQLString } from 'graphql';
+import { UUIDType } from '../types/uuid.js';
 import { GraphQLNonNull } from 'graphql/type/index.js';
-import { memberTypeId } from '../enums/memberTypeId.js';
 
-export const memberType = {
-  memberType: {
-    type: memberTypeType,
+export const deleteUser = {
+  deleteUser: {
+    type: new GraphQLNonNull(GraphQLString),
 
     args: {
       id: {
-        type: new GraphQLNonNull(memberTypeId),
+        type: new GraphQLNonNull(UUIDType),
       },
     },
 
@@ -22,11 +22,13 @@ export const memberType = {
       },
       { prisma }: { prisma: PrismaClient },
     ) {
-      return prisma.memberType.findUnique({
+      await prisma.user.delete({
         where: {
           id,
         },
       });
+
+      return id;
     },
   },
 };
