@@ -3,6 +3,7 @@ import { UUIDType } from './uuid.js';
 import { memberTypeType } from './memberTypeType.js';
 import { GraphQLNonNull } from 'graphql/type/index.js';
 import { PrismaClient, type Profile } from '@prisma/client';
+import DataLoader from 'dataloader';
 
 export const profileType = new GraphQLObjectType({
   name: 'Profile',
@@ -27,9 +28,14 @@ export const profileType = new GraphQLObjectType({
         async resolve(
           profile: Profile,
           _args: unknown,
-          { prisma }: { prisma: PrismaClient },
+          {
+            loaders,
+          }: {
+            prisma: PrismaClient;
+            loaders: Record<string, InstanceType<typeof DataLoader>>;
+          },
         ) {
-          return prisma.profile.findUnique({ where: { id: profile.id } }).memberType();
+          return loaders.memberTypeLoader.load(profile.memberTypeId);
         },
       },
     };

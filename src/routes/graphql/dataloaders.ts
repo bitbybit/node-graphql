@@ -1,5 +1,11 @@
 import DataLoader from 'dataloader';
-import { type Post, PrismaClient, type Profile, type User } from '@prisma/client';
+import {
+  type MemberType,
+  type Post,
+  PrismaClient,
+  type Profile,
+  type User,
+} from '@prisma/client';
 
 export function createLoaders(prisma: PrismaClient) {
   return {
@@ -69,6 +75,20 @@ export function createLoaders(prisma: PrismaClient) {
       });
 
       return userIds.map((id) => profileMap.get(id) || null);
+    }),
+
+    memberTypeLoader: new DataLoader(async (memberTypeIds: readonly string[]) => {
+      const memberTypes = await prisma.memberType.findMany({
+        where: { id: { in: memberTypeIds as string[] } },
+      });
+
+      const memberTypeMap = new Map<string, MemberType | null>();
+
+      memberTypes.forEach((memberType) => {
+        memberTypeMap.set(memberType.id, memberType);
+      });
+
+      return memberTypeIds.map((id) => memberTypeMap.get(id) || null);
     }),
   };
 }
