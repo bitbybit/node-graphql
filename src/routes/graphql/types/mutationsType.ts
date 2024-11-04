@@ -11,7 +11,7 @@ import { deleteProfile } from '../mutations/deleteProfile.js';
 import { subscribeTo } from '../mutations/subscribeTo.js';
 import { unsubscribeFrom } from '../mutations/unsubscribeFrom.js';
 
-export const mutationType = new GraphQLObjectType({
+export const mutationsType = new GraphQLObjectType({
   name: 'Mutations',
 
   fields() {

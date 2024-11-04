@@ -4,7 +4,7 @@ import { UUIDType } from '../types/uuid.js';
 import { GraphQLNonNull } from 'graphql/type/index.js';
 
 export const deletePost = {
-  deleteUser: {
+  deletePost: {
     type: new GraphQLNonNull(GraphQLString),
 
     args: {

@@ -4,7 +4,7 @@ import { UUIDType } from '../types/uuid.js';
 import { memberTypeId } from '../enums/memberTypeId.js';
 
 export const createProfileInput = new GraphQLInputObjectType({
-  name: 'createProfileInput',
+  name: 'CreateProfileInput',
 
   fields: {
     isMale: {

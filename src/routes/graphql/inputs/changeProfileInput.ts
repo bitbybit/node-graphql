@@ -3,7 +3,7 @@ import { GraphQLBoolean, GraphQLInt } from 'graphql';
 import { memberTypeId } from '../enums/memberTypeId.js';
 
 export const changeProfileInput = new GraphQLInputObjectType({
-  name: 'changeProfileInput',
+  name: 'ChangeProfileInput',
 
   fields: {
     isMale: {

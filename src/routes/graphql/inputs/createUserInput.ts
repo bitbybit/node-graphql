@@ -2,7 +2,7 @@ import { GraphQLInputObjectType, GraphQLNonNull } from 'graphql/type/index.js';
 import { GraphQLFloat, GraphQLString } from 'graphql';
 
 export const createUserInput = new GraphQLInputObjectType({
-  name: 'createUserInput',
+  name: 'CreateUserInput',
 
   fields: {
     name: {
